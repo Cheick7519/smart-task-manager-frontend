@@ -7,7 +7,7 @@ export default function UserList() {
   // Charger les utilisateurs
   const loadUsers = async () => {
     try {
-      const res = await api.get('/users');
+      const res = await api.get('/users/listUsers');
       setUsers(res.data);
     } catch (err) {
       console.error('Erreur chargement utilisateurs :', err);

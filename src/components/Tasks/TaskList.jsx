@@ -7,8 +7,14 @@ export default function TaskList() {
   // Charger toutes les tâches
   const loadTasks = async () => {
     try {
-      const res = await api.get('/tasks');
-      setTasks(res.data);
+      const res = await api.get("/tasks/listTasks", {
+        params: {
+          page: 0,
+          size: 10
+        }
+      });
+      console.log(res.data);
+      setTasks(res.data.content); // 👈 IMPORTANT
     } catch (err) {
       console.error('Erreur chargement tâches :', err);
       alert('Impossible de charger les tâches');
@@ -18,7 +24,7 @@ export default function TaskList() {
   // Supprimer une tâche par ID
   const deleteTask = async (id) => {
     try {
-      await api.delete(`/tasks/${id}`);
+      await api.delete(`/tasks/deleteTask/${id}`);
       // Supprimer localement sans recharger toute la liste
       setTasks((prevTasks) => prevTasks.filter((t) => t.id !== id));
     } catch (err) {

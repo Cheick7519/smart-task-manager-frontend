@@ -20,7 +20,7 @@ export default function TaskForm() {
         assignedToId: assignedToId ? Number(assignedToId) : null
       };
 
-      await axios.post("/api/tasks", newTask);
+      await axios.post("/tasks/addTask", newTask);
 
       // Réinitialisation du formulaire
       setTitle("");

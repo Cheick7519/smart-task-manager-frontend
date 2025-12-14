@@ -11,7 +11,7 @@ export default function UserForm({ onUserCreated }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await api.post('/users/register', {
+      await api.post('/users/addUser', {
         username,
         email,
         password,
